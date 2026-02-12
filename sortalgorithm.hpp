@@ -4,15 +4,20 @@
 #include <random> //Bogosort
 
 inline void bubblesort(std::vector<int>& list){
-    bool sorted = false;
-    while(!sorted){
-        sorted = true;
-        for (size_t i = 1;i<list.size();i++){
+    if(list.empty()) return;
+    bool swapped = true;
+    size_t n = list.size();
+    while(swapped){
+        swapped = false;
+        for (size_t i = 1; i<n; i++){
             if (list[i-1]>list[i]){
                 std::swap(list[i-1],list[i]);
-                sorted = false;
+                swapped = true;
             }
         }
+        //Da das letzte Element schon sortiert ist,
+        //ignorieren wir es im nächsten Durchlauf
+        n--;
     }
 }
 
