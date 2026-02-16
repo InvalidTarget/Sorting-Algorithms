@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<int> favourite_numbers = {700,2,5,13,67,55,285,4};
+vector<int> favourite_numbers = {700,2,5,13,67,55,285,4,15,500,3,5,7,347,347,7,547,453,8,836,8358,6,836,8,568,5,6,84,568,45468,68,8,84};
 
 void print_list(vector<int> list, string description = ""){
     cout << description << ": ";
@@ -18,6 +18,7 @@ void print_list(vector<int> list, string description = ""){
 
 template <typename Func>
 void test_sort(std::vector<int>& list, Func sort_func, const std::string& name){
+    print_list(favourite_numbers,"Unsortiert");
     auto start = std::chrono::high_resolution_clock::now();
     sort_func(list);  // in-place Sortierung
     auto end = std::chrono::high_resolution_clock::now();
@@ -46,18 +47,20 @@ void test_sort(std::vector<int>& list, Func sort_func, const std::string& name){
 
 int main(){
     cout << "=== Sortieralgorithmus Test ===\n\n";
-
+    shuffle_list(favourite_numbers);
+    vector<int> shuffled_list = favourite_numbers;
+    
     test_sort(favourite_numbers, gnomesort, "Gnomesort");
 
-    shuffle_list(favourite_numbers);
+    favourite_numbers = shuffled_list;
     test_sort(favourite_numbers, quicksort, "Quicksort");
     
-    shuffle_list(favourite_numbers);
+    favourite_numbers = shuffled_list;
     test_sort(favourite_numbers, bubblesort, "Bubblesort");
 
     // Für Bogosort unbedingt kleine Liste!
-    shuffle_list(favourite_numbers);
-    test_sort(favourite_numbers, bogosort, "Bogosort");
+    //favourite_numbers = shuffled_list;
+    //test_sort(favourite_numbers, bogosort, "Bogosort");
     
 
     return 0;
