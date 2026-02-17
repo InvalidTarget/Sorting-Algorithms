@@ -64,6 +64,19 @@ inline void quicksort(std::vector<int>& list){
     quicksort_helper(list, 0, list.size() - 1);
 }
 
+inline void insertionsort(std::vector<int>& list){
+    for(size_t i=0;i<list.size();i++){
+        int currentvalue = list [i];
+        size_t position = i;
+
+        while (position>0 && list[position-1]>currentvalue){
+            list[position] = list[position-1];
+            position = position-1;
+        }
+
+        list[position] = currentvalue;
+    }
+}
 
 inline void shuffle_list(std::vector<int>& list){
     std::random_device rd;

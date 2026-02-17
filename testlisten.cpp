@@ -58,6 +58,8 @@ int main(){
     favourite_numbers = shuffled_list;
     test_sort(favourite_numbers, bubblesort, "Bubblesort");
 
+    favourite_numbers = shuffled_list;
+    test_sort(favourite_numbers,insertionsort, "Insertionsort");
     // Für Bogosort unbedingt kleine Liste!
     //favourite_numbers = shuffled_list;
     //test_sort(favourite_numbers, bogosort, "Bogosort");
